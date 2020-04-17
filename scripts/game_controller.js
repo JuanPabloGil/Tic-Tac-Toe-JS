@@ -13,11 +13,11 @@ const gameController = (function(doc) {
   const get_players = (playerOne, playerTwo) => {
     return [Player(
       playerOne,
-      'X'
+      '✘'
     ),
     Player(
       playerTwo,
-      'O'
+      '●'
     )];
   }
 
