@@ -8,8 +8,23 @@ const gameController = (function(doc) {
     });
   }
 
+  let players = [];
+
+  const get_players = (playerOne, playerTwo) => {
+    return [Player(
+      playerOne,
+      'X'
+    ),
+    Player(
+      playerTwo,
+      'O'
+    )];
+  }
+
   return {
-    render
+    render,
+    get_players,
+    players
   }
 
 })(document);

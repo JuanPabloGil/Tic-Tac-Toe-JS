@@ -8,19 +8,9 @@ button.addEventListener('click', () => {
   const playerTwo =form.playerTwo.value;
 
   //if (validatePlayers(playerOne,playerTwo) {
-
-    const player1 = Player(
-      playerOne,
-      'X'
-    );
-    const player2 = Player(
-      playerTwo,
-      'O'
-    );
-    
-console.log(player1);
-console.log(player2);
+  gameController.players = gameController.get_players(playerOne, playerTwo);
   //}
 });
+
 
 gameController.render(gameBoard.arr);
