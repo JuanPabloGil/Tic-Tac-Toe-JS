@@ -24,5 +24,11 @@ button.addEventListener('click', () => {
 
 });
 
+const squares = [...document.querySelectorAll('.square')];
+squares.forEach((square) => {
+  square.addEventListener('click',(event) => {
+    console.log(gameBoard.there_is_winner());
+  });
+});
 
 gameController.render(gameBoard.arr);
