@@ -4,5 +4,5 @@ const Player = (namePlayer, symbolPlayer) => {
   const symbol = symbolPlayer;
 
   return {name, symbol}
-  
+
 };
