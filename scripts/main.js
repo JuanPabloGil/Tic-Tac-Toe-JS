@@ -1,0 +1,1 @@
+gameController.render(gameBoard.arr);
