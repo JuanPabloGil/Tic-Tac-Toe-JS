@@ -29,10 +29,16 @@ button.addEventListener('click', () => {
 const squares = [...document.querySelectorAll('.square')];
 squares.forEach((square) => {
   square.addEventListener('click',(event) => {
-    //event.target.textContent 
-    gameBoard.add_move(event.target.value, '●')
-    gameController.render(gameBoard.arr);
+    if (gameController.players.length > 0 &&
+      gameBoard.there_is_place() &&
+      !gameBoard.there_is_winner() ) {
+        let cPlayer = gameController.current_player;
+        if (gameBoard.add_move(event.target.value, gameController.players[cPlayer].symbol)){
+          gameController.current_player =  cPlayer == 0 ? 1 : 0;
+          gameController.render(gameBoard.arr);
+        }
+      }
+    });
   });
-});
 
-gameController.render(gameBoard.arr);
+  gameController.render(gameBoard.arr);

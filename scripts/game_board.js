@@ -12,7 +12,7 @@ const gameBoard = (function() {
     return LINES_TO_WIN;
   };
 
-  let arr = ['✘', '✘', '✘', '4', '5', '6', '7', '8', '9'];
+  let arr = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
   //let arr = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
   const there_is_place = function() {
@@ -31,7 +31,7 @@ const gameBoard = (function() {
       this.arr[parseInt(place) - 1] == '✘') {
       return false;
     }
-      
+
     this.arr[parseInt(place) - 1] = symbol;
     return true;
   }
@@ -44,6 +44,7 @@ const gameBoard = (function() {
     }, this);
     return response;
   };
+
 
   return {
     arr,

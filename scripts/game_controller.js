@@ -21,10 +21,14 @@ const gameController = (function(doc) {
     )];
   }
 
+  let current_player = 0 ;
+
+
   return {
     render,
     get_players,
-    players
+    players,
+    current_player
   }
 
 })(document);
