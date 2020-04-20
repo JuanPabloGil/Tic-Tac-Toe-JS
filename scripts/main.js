@@ -29,16 +29,22 @@ button.addEventListener('click', () => {
 const squares = [...document.querySelectorAll('.square')];
 squares.forEach((square) => {
   square.addEventListener('click',(event) => {
-    if (gameController.players.length > 0 &&
-      gameBoard.there_is_place() &&
-      !gameBoard.there_is_winner() ) {
-        let cPlayer = gameController.current_player;
-        if (gameBoard.add_move(event.target.value, gameController.players[cPlayer].symbol)){
-          gameController.current_player =  cPlayer == 0 ? 1 : 0;
-          gameController.render(gameBoard.arr);
-        }
-      }
-    });
-  });
 
-  gameController.render(gameBoard.arr);
+    let cPlayer = gameController.current_player;
+    if (gameController.players.length > 0 ) {
+        gameBoard.add_move(event.target.value, gameController.players[cPlayer].symbol);
+      if (gameBoard.there_is_winner()){
+            console.log("Someone wis");
+          }
+            if (!gameBoard.there_is_winner() && !gameBoard.there_is_place()){
+              console.log("Tie");
+            }
+        gameController.render(gameBoard.arr);
+        gameController.current_player =  cPlayer == 0 ? 1 : 0;
+      }
+
+
+  });
+});
+
+gameController.render(gameBoard.arr);
