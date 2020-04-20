@@ -15,6 +15,7 @@ button.addEventListener('click', () => {
 
   if (validatePlayers(p1.value, p2.value)) {
     gameController.players = gameController.get_players(p1.value, p2.value);
+    gameController.display_current_turn(gameController.current_player);
     document.getElementById('error_message').textContent = "";
     p1.value = "";
     p2.value = "";
@@ -31,9 +32,9 @@ squares.forEach((square) => {
   square.addEventListener('click',(event) => {
     const cPlayer = gameController.current_player;
     if (gameController.players.length > 0 &&
-        gameBoard.add_move(event.target.value, gameController.players[cPlayer].symbol)
-      ) {
+        gameBoard.add_move(event.target.value, gameController.players[cPlayer].symbol)) {
         gameController.current_player =  cPlayer == 0 ? 1 : 0;
+        gameController.display_current_turn(gameController.current_player);
         gameController.render(gameBoard.arr);
 
         if(gameBoard.there_is_winner()) {

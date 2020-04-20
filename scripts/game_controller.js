@@ -23,12 +23,17 @@ const gameController = (function(doc) {
 
   let current_player = 0 ;
 
+  const display_current_turn = function(current_player) {
+    document.getElementById('cPlayer').textContent =  "Player's turn: " + this.players[current_player].symbol;
+  }
+
 
   return {
     render,
     get_players,
     players,
-    current_player
+    current_player,
+    display_current_turn
   }
 
 })(document);
