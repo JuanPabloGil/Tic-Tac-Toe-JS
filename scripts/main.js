@@ -14,20 +14,23 @@ button.addEventListener('click', () => {
   const p2 = form.playerTwo;
 
   if (validatePlayers(p1.value, p2.value)) {
+    gameController.players = gameController.get_players(p1.value, p2.value);
     document.getElementById('error_message').textContent = "";
     p1.value = "";
     p2.value = "";
-    gameController.players = gameController.get_players(p1.value, p2.value);
+
   }else{
     document.getElementById('error_message').textContent = "The playe's name must have more than 3 chars ";
   }
 
 });
 
+
 const squares = [...document.querySelectorAll('.square')];
 squares.forEach((square) => {
   square.addEventListener('click',(event) => {
-    console.log(gameBoard.there_is_winner());
+    //event.target.textContent 
+    console.log(gameController.players);
   });
 });
 

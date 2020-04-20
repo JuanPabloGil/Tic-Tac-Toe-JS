@@ -11,7 +11,7 @@ const gameBoard = (function() {
   const linesToWin = () => {
     return LINES_TO_WIN;
   };
-  
+
   let arr = ['✘', '✘', '✘', '4', '5', '6', '7', '8', '9'];
   //let arr = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
@@ -24,6 +24,16 @@ const gameBoard = (function() {
     });
     return response;
   };
+
+  const add_move() {
+    return false if place.class != String ||
+                   !place.match?(/^[1-9]$/) ||
+                   @arr[place.to_i] == '●' ||
+                   @arr[place.to_i] == '✘'
+
+   @arr[place.to_i] = symbol
+   true
+  }
 
   const there_is_winner = function() {
     let response = false;
