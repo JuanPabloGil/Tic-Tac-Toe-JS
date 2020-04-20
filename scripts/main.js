@@ -30,7 +30,8 @@ const squares = [...document.querySelectorAll('.square')];
 squares.forEach((square) => {
   square.addEventListener('click',(event) => {
     //event.target.textContent 
-    console.log(gameController.players);
+    gameBoard.add_move(event.target.value, '●')
+    gameController.render(gameBoard.arr);
   });
 });
 

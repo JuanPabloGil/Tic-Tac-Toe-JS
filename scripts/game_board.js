@@ -25,14 +25,15 @@ const gameBoard = (function() {
     return response;
   };
 
-  const add_move() {
-    return false if place.class != String ||
-                   !place.match?(/^[1-9]$/) ||
-                   @arr[place.to_i] == '●' ||
-                   @arr[place.to_i] == '✘'
-
-   @arr[place.to_i] = symbol
-   true
+  const add_move = function(place, symbol) {
+    if (!/^[1-9]$/.test(place)||
+      this.arr[parseInt(place) - 1] == '●' ||
+      this.arr[parseInt(place) - 1] == '✘') {
+      return false;
+    }
+      
+    this.arr[parseInt(place) - 1] = symbol;
+    return true;
   }
 
   const there_is_winner = function() {
@@ -47,6 +48,7 @@ const gameBoard = (function() {
   return {
     arr,
     there_is_place,
-    there_is_winner
+    there_is_winner,
+    add_move
   }
 })();
