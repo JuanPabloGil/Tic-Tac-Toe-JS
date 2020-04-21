@@ -1,4 +1,4 @@
-const gameBoard = (function () {
+const gameBoard = (function gameBoard() { // eslint-disable-line no-unused-vars
   const LINES_TO_WIN = [[0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -12,7 +12,7 @@ const gameBoard = (function () {
 
   const arr = ['', '', '', '', '', '', '', '', ''];
 
-  const there_is_place = function () {
+  const thereIsPlace = function thereIsPlace() {
     let response = false;
     this.arr.forEach((item) => {
       if (item !== '✘' && item !== '●') {
@@ -22,18 +22,18 @@ const gameBoard = (function () {
     return response;
   };
 
-  const add_move = function (place, symbol) {
+  const addMove = function addMove(place, symbol) {
     if (!/^[1-9]$/.test(place)
-      || this.arr[parseInt(place) - 1] === '●'
-      || this.arr[parseInt(place) - 1] === '✘') {
+      || this.arr[parseInt(place, 10) - 1] === '●'
+      || this.arr[parseInt(place, 10) - 1] === '✘') {
       return false;
     }
 
-    this.arr[parseInt(place) - 1] = symbol;
+    this.arr[parseInt(place, 10) - 1] = symbol;
     return true;
   };
 
-  const there_is_winner = function () {
+  const thereIsWinner = function thereIsWinner() {
     let response = false;
     linesToWin().forEach((line) => {
       if (this.arr[line[0]] === this.arr[line[1]]
@@ -44,7 +44,7 @@ const gameBoard = (function () {
     return response;
   };
 
-  const give_me_winner = function () {
+  const giveMeWinner = function giveMeWinner() {
     let response = '';
     linesToWin().forEach((line) => {
       if (this.arr[line[0]] === this.arr[line[1]]
@@ -55,17 +55,17 @@ const gameBoard = (function () {
     return response;
   };
 
-  const clean_board = function () {
+  const cleanBoard = function cleanBoard() {
     this.arr = ['', '', '', '', '', '', '', '', ''];
   };
 
 
   return {
     arr,
-    there_is_place,
-    there_is_winner,
-    add_move,
-    give_me_winner,
-    clean_board,
+    thereIsPlace,
+    thereIsWinner,
+    addMove,
+    giveMeWinner,
+    cleanBoard,
   };
 }());

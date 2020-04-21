@@ -1,7 +1,7 @@
-/* global gameBoard,  a */
+/* global gameBoard */
 const ai = '✘';
 const human = '●';
-const aiEntity = (function () {
+const aiEntity = (function aiEntity() { // eslint-disable-line no-unused-vars
   const scores = () => ({
     '✘': 10,
     '●': -10,
@@ -10,9 +10,9 @@ const aiEntity = (function () {
 
   function checkWinnerOrTie() {
     let result = '';
-    if (gameBoard.there_is_winner()) {
-      result = gameBoard.give_me_winner();
-    } else if (!gameBoard.there_is_place()) {
+    if (gameBoard.thereIsWinner()) {
+      result = gameBoard.giveMeWinner();
+    } else if (!gameBoard.thereIsPlace()) {
       result = 'tie';
     }
     return result;
@@ -49,7 +49,7 @@ const aiEntity = (function () {
   }
 
 
-  const bestMove = function () {
+  const bestMove = function bestMove() {
     let bestScore = -Infinity;
     let move;
     gameBoard.arr.forEach((item, i) => {

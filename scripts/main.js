@@ -4,26 +4,27 @@ function validatePlayers(player1, player2) {
   if (player1.length > 3 && player2.length > 3) {
     return true;
   }
+  return false;
 }
 
 const button = document.getElementById('button');
 button.addEventListener('click', () => {
   gameController.players = [];
-  gameBoard.clean_board();
+  gameBoard.cleanBoard();
   gameController.render(gameBoard.arr);
-  gameController.current_player = 0;
+  gameController.currentPlayer = 0;
 
-  if (gameController.against_computer) {
-    gameController.players = gameController.get_players('Human', 'AI');
-    gameController.display_on_title_message(`Turn's of:  ${gameController.players[gameController.current_player].name}`);
+  if (gameController.againstComputer) {
+    gameController.players = gameController.getPlayers('Human', 'AI');
+    gameController.displayOnTitleMessage(`Turn's of:  ${gameController.players[gameController.currentPlayer].name}`);
   } else {
     const form = document.getElementById('form');
     const p1 = form.playerOne;
     const p2 = form.playerTwo;
 
     if (validatePlayers(p1.value, p2.value)) {
-      gameController.players = gameController.get_players(p1.value, p2.value);
-      gameController.display_on_title_message(`Turn's of:  ${gameController.players[gameController.current_player].name}`);
+      gameController.players = gameController.getPlayers(p1.value, p2.value);
+      gameController.displayOnTitleMessage(`Turn's of:  ${gameController.players[gameController.currentPlayer].name}`);
       document.getElementById('error_message').textContent = '';
     } else {
       document.getElementById('error_message').textContent = "The playe's name must have more than 3 chars ";
@@ -32,54 +33,54 @@ button.addEventListener('click', () => {
 });
 
 
-const toggle_button = document.querySelector('.against_computer input');
-toggle_button.addEventListener('click', (event) => {
-  gameController.against_computer = event.target.checked;
+const toggleButton = document.querySelector('.againstComputer input');
+toggleButton.addEventListener('click', (event) => {
+  gameController.againstComputer = event.target.checked;
   gameController.players = [];
-  gameBoard.clean_board();
+  gameBoard.cleanBoard();
   gameController.render(gameBoard.arr);
 
   const form = document.getElementById('form');
-  if (gameController.against_computer) {
+  if (gameController.againstComputer) {
     form.style.display = 'none';
   } else {
     form.style.display = 'block';
   }
 });
 
-function check_current_player(place, cPlayer) {
+function checkCurrentPlayer(place, cPlayer) {
   if (gameController.players.length > 0
-    && gameBoard.add_move(place, gameController.players[cPlayer].symbol)
+    && gameBoard.addMove(place, gameController.players[cPlayer].symbol)
   ) {
-    gameController.current_player = cPlayer === 0 ? 1 : 0;
-    gameController.display_on_title_message(`Turn's of:  ${gameController.players[gameController.current_player].name}`);
+    gameController.currentPlayer = cPlayer === 0 ? 1 : 0;
+    gameController.displayOnTitleMessage(`Turn's of:  ${gameController.players[gameController.currentPlayer].name}`);
     gameController.render(gameBoard.arr);
 
-    if (gameBoard.there_is_winner()) {
-      gameController.display_on_title_message(`Congratulations ${gameController.players[cPlayer].name} you win `);
-    } else if (!gameBoard.there_is_place()) {
-      gameController.display_on_title_message('Its a tie');
+    if (gameBoard.thereIsWinner()) {
+      gameController.displayOnTitleMessage(`Congratulations ${gameController.players[cPlayer].name} you win `);
+    } else if (!gameBoard.thereIsPlace()) {
+      gameController.displayOnTitleMessage('Its a tie');
     }
   } else if (gameController.players.length === 0) {
-    gameController.display_on_title_message('Please press start game');
+    gameController.displayOnTitleMessage('Please press start game');
   }
 }
 
 const squares = [...document.querySelectorAll('.square')];
 squares.forEach((square) => {
   square.addEventListener('click', (event) => {
-    if (!gameBoard.there_is_winner()) {
-      let cPlayer = gameController.current_player;
+    if (!gameBoard.thereIsWinner()) {
+      let cPlayer = gameController.currentPlayer;
       let place = event.target.value;
-      check_current_player(place, cPlayer);
+      checkCurrentPlayer(place, cPlayer);
 
       if (gameController.players.length > 0
-        && gameController.against_computer
-        && gameBoard.there_is_place()
+        && gameController.againstComputer
+        && gameBoard.thereIsPlace()
       ) {
-        cPlayer = gameController.current_player;
+        cPlayer = gameController.currentPlayer;
         place = (aiEntity.bestMove() + 1).toString();
-        check_current_player(place, cPlayer);
+        checkCurrentPlayer(place, cPlayer);
       }
     }
   });
