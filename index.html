@@ -5,18 +5,7 @@
   <link rel="stylesheet" href="css/board.css">
 </head>
 <body>
-
-  <div class="errors">
-    <p id="error_message"></p>
-  </div>
-
-  <form id="form" class=""  method="post">
-    <label> Player 1 <input id="playerOne" type="text" name="" placeholder="Name or nickname" value=""></label><br>
-    <label> Player 2 <input id="playerTwo" type="text" name="" placeholder="Name or nickname" value=""></label><br>
-    <button id="button" type="button" name="button"> Start game </button>
-  </form>
-
-
+  <h1 id="cPlayer"> </h1>
 
   <div class="game-board">
     <div>
@@ -38,7 +27,23 @@
     </div>
   </div>
 
-  <h1 id="cPlayer"> </h1>
+  <label>
+    Againts computer
+    <div class="switch against_computer">
+      <input type="checkbox" checked>
+      <span class="slider"></span>
+    </div>
+  </label>
+
+  <form id="form" class=""  method="post" style="display: none;">
+    <div class="errors">
+      <p id="error_message"></p>
+    </div>
+    <label> Player 1 <input id="playerOne" type="text" name="" placeholder="Name or nickname" value=""></label><br>
+    <label> Player 2 <input id="playerTwo" type="text" name="" placeholder="Name or nickname" value=""></label><br>
+  </form>
+  <br>
+  <button id="button" type="button" name="button"> Start game </button>
 
   <script src="scripts/ai_entity.js"></script>
   <script src="scripts/game_board.js"></script>

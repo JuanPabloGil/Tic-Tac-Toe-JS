@@ -13,7 +13,6 @@ const gameBoard = (function() {
   };
 
   let arr = ['', '', '', '', '', '', '', '', ''];
-  //let arr = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
   const there_is_place = function() {
     let response = false;
@@ -54,12 +53,17 @@ const gameBoard = (function() {
     return response;
   };
 
+  const clean_board = function(){
+    this.arr = ['', '', '', '', '', '', '', '', ''];
+  }
+
 
   return {
     arr,
     there_is_place,
     there_is_winner,
     add_move,
-    give_me_winner
+    give_me_winner,
+    clean_board
   }
 })();

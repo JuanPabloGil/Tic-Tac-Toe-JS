@@ -27,13 +27,16 @@ const gameController = (function(doc) {
     document.getElementById('cPlayer').textContent =  "Player's turn: " + this.players[current_player].symbol;
   }
 
+  let against_computer = true;
+
 
   return {
     render,
     get_players,
     players,
     current_player,
-    display_current_turn
+    display_current_turn,
+    against_computer
   }
 
 })(document);

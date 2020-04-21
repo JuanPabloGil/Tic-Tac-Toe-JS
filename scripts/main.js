@@ -6,7 +6,6 @@ function validatePlayers(player1, player2) {
 }
 
 const button = document.getElementById('button');
-
 button.addEventListener('click', () => {
   const form = document.getElementById('form');
 
@@ -26,6 +25,21 @@ button.addEventListener('click', () => {
 
 });
 
+
+const toggle_button = document.querySelector('.against_computer input');
+toggle_button.addEventListener('click', (event) => {
+  gameController.against_computer = event.target.checked;
+  gameController.players = [];
+  gameBoard.clean_board();
+  gameController.render(gameBoard.arr)
+
+  const form = document.getElementById('form');
+  if (gameController.against_computer) {
+    form.style.display = "none";
+  } else {
+    form.style.display = "block";
+  }
+});
 
 const squares = [...document.querySelectorAll('.square')];
 squares.forEach((square) => {
