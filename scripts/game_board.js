@@ -38,7 +38,10 @@ const gameBoard = (function() {
   const there_is_winner = function() {
     let response = false;
     linesToWin().forEach((line) => {
-      if (this.arr[line[0]] == this.arr[line[1]] && this.arr[line[1]] == this.arr[line[2]])
+      if (this.arr[line[0]] == this.arr[line[1]] && 
+          this.arr[line[1]] == this.arr[line[2]] &&
+          this.arr[line[0]] != ''
+        )
         response = true;
     }, this);
     return response;
@@ -47,7 +50,10 @@ const gameBoard = (function() {
   const give_me_winner = function() {
     let response = '';
     linesToWin().forEach((line) => {
-      if (this.arr[line[0]] == this.arr[line[1]] && this.arr[line[1]] == this.arr[line[2]])
+      if (this.arr[line[0]] == this.arr[line[1]] && 
+        this.arr[line[1]] == this.arr[line[2]] &&
+        this.arr[line[0]] != ''
+      )
         response = this.arr[line[0]];
     }, this);
     return response;
