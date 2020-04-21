@@ -11,8 +11,8 @@ button.addEventListener('click', () => {
     gameController.render(gameBoard.arr)
 
   if (gameController.against_computer){
-    gameController.players = gameController.get_players("Human", "Ai");
-    gameController.display_current_turn(gameController.current_player);
+    gameController.players = gameController.get_players("Human", "AI");
+  gameController.display_on_title("Turn's of: ",gameController.current_player);
   }else{
     const form = document.getElementById('form');
     const p1 = form.playerOne;
@@ -20,7 +20,7 @@ button.addEventListener('click', () => {
 
     if (validatePlayers(p1.value, p2.value)) {
       gameController.players = gameController.get_players(p1.value, p2.value);
-      gameController.display_current_turn(gameController.current_player);
+      gameController.display_on_title("Turn's of: ",gameController.current_player);
       document.getElementById('error_message').textContent = "";
     }else{
       document.getElementById('error_message').textContent = "The playe's name must have more than 3 chars ";
@@ -46,21 +46,22 @@ toggle_button.addEventListener('click', (event) => {
 });
 
 function check_current_player(place, cPlayer){
+  console.log(gameController.current_player);
   if (gameController.players.length > 0 &&
     gameBoard.add_move(place, gameController.players[cPlayer].symbol)
   ) {
     gameController.current_player =  cPlayer == 0 ? 1 : 0;
-    gameController.display_current_turn(gameController.current_player);
+    gameController.display_on_title_message(`Turn's of:  ${gameController.players[gameController.current_player].name}`);
     gameController.render(gameBoard.arr);
 
     if(gameBoard.there_is_winner()) {
-      console.log(`${gameController.players[cPlayer].name} wins!!`);
+      gameController.display_on_title_message(`Congratulations ${gameController.players[cPlayer].name} you win `);
     } else if(!gameBoard.there_is_place()) {
-      console.log('This is a tie');
+      gameController.display_on_title_message("Its a tie");
     }
   } else {
     if(gameController.players.length == 0){
-      console.log('Please enter players');
+      gameController.display_on_title_message("Please press start game");
     }
   }
 }
@@ -74,7 +75,7 @@ squares.forEach((square) => {
     check_current_player(place, cPlayer);
 
     if (gameController.players.length > 0 &&
-        gameController.against_computer && 
+        gameController.against_computer &&
         gameBoard.there_is_place()
     ) {
       cPlayer = gameController.current_player;

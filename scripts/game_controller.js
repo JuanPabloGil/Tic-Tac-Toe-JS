@@ -23,8 +23,8 @@ const gameController = (function(doc) {
 
   let current_player = 0 ;
 
-  const display_current_turn = function(current_player) {
-    doc.getElementById('cPlayer').textContent =  "Player's turn: " + this.players[current_player].name;
+  const display_on_title_message = function(message) {
+    doc.getElementById('cPlayer').textContent =  message;
   }
 
   let against_computer = true;
@@ -35,7 +35,7 @@ const gameController = (function(doc) {
     get_players,
     players,
     current_player,
-    display_current_turn,
+    display_on_title_message,
     against_computer
   }
 
