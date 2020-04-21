@@ -7,12 +7,14 @@ function validatePlayers(player1, player2) {
 
 const button = document.getElementById('button');
 button.addEventListener('click', () => {
-    gameBoard.clean_board();
-    gameController.render(gameBoard.arr)
+      gameController.players = [];
+      gameBoard.clean_board();
+      gameController.render(gameBoard.arr);
+      gameController.current_player = 0 ;
 
   if (gameController.against_computer){
     gameController.players = gameController.get_players("Human", "AI");
-  gameController.display_on_title("Turn's of: ",gameController.current_player);
+    gameController.display_on_title_message(`Turn's of:  ${gameController.players[gameController.current_player].name}`);
   }else{
     const form = document.getElementById('form');
     const p1 = form.playerOne;
@@ -20,7 +22,7 @@ button.addEventListener('click', () => {
 
     if (validatePlayers(p1.value, p2.value)) {
       gameController.players = gameController.get_players(p1.value, p2.value);
-      gameController.display_on_title("Turn's of: ",gameController.current_player);
+      gameController.display_on_title_message(`Turn's of:  ${gameController.players[gameController.current_player].name}`);
       document.getElementById('error_message').textContent = "";
     }else{
       document.getElementById('error_message').textContent = "The playe's name must have more than 3 chars ";
@@ -46,7 +48,7 @@ toggle_button.addEventListener('click', (event) => {
 });
 
 function check_current_player(place, cPlayer){
-  console.log(gameController.current_player);
+
   if (gameController.players.length > 0 &&
     gameBoard.add_move(place, gameController.players[cPlayer].symbol)
   ) {
@@ -69,19 +71,21 @@ function check_current_player(place, cPlayer){
 const squares = [...document.querySelectorAll('.square')];
 squares.forEach((square) => {
   square.addEventListener('click',(event) => {
+    if (!gameBoard.there_is_winner()){
+      let cPlayer = gameController.current_player;
+      let place = event.target.value;
+      check_current_player(place, cPlayer);
 
-    let cPlayer = gameController.current_player;
-    let place = event.target.value;
-    check_current_player(place, cPlayer);
-
-    if (gameController.players.length > 0 &&
+      if (gameController.players.length > 0 &&
         gameController.against_computer &&
         gameBoard.there_is_place()
-    ) {
-      cPlayer = gameController.current_player;
-      place = (aiEntity.bestMove() + 1).toString();
-      check_current_player(place, cPlayer);
+      ) {
+        cPlayer = gameController.current_player;
+        place = (aiEntity.bestMove() + 1).toString();
+        check_current_player(place, cPlayer);
+      }
     }
+
   });
 });
 
