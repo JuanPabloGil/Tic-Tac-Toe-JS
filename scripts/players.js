@@ -1,8 +1,6 @@
-const Player = (namePlayer, symbolPlayer) => {
-
-  const name = namePlayer
+const Player = (namePlayer, symbolPlayer) => { // eslint-disable-line no-unused-vars
+  const name = namePlayer;
   const symbol = symbolPlayer;
 
-  return {name, symbol}
-
+  return { name, symbol };
 };
