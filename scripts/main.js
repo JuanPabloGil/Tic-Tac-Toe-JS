@@ -7,13 +7,11 @@ function validatePlayers(player1, player2) {
 
 const button = document.getElementById('button');
 button.addEventListener('click', () => {
-  const form = document.getElementById('form');
-
   if (gameController.against_computer){
     gameController.players = gameController.get_players("Human", "Ai");
     gameController.display_current_turn(gameController.current_player);
   }else{
-
+    const form = document.getElementById('form');
     const p1 = form.playerOne;
     const p2 = form.playerTwo;
 
@@ -21,9 +19,6 @@ button.addEventListener('click', () => {
       gameController.players = gameController.get_players(p1.value, p2.value);
       gameController.display_current_turn(gameController.current_player);
       document.getElementById('error_message').textContent = "";
-      p1.value = "";
-      p2.value = "";
-
     }else{
       document.getElementById('error_message').textContent = "The playe's name must have more than 3 chars ";
     }
