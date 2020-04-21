@@ -12,7 +12,7 @@ const gameBoard = (function() {
     return LINES_TO_WIN;
   };
 
-  let arr = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  let arr = ['', '', '', '', '', '', '', '', ''];
   //let arr = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
   const there_is_place = function() {
@@ -45,11 +45,21 @@ const gameBoard = (function() {
     return response;
   };
 
+  const give_me_winner = function() {
+    let response = '';
+    linesToWin().forEach((line) => {
+      if (this.arr[line[0]] == this.arr[line[1]] && this.arr[line[1]] == this.arr[line[2]])
+        response = this.arr[line[0]];
+    }, this);
+    return response;
+  };
+
 
   return {
     arr,
     there_is_place,
     there_is_winner,
-    add_move
+    add_move,
+    give_me_winner
   }
 })();
