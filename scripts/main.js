@@ -9,20 +9,26 @@ const button = document.getElementById('button');
 button.addEventListener('click', () => {
   const form = document.getElementById('form');
 
-  const p1 = form.playerOne;
-  const p2 = form.playerTwo;
-
-  if (validatePlayers(p1.value, p2.value)) {
-    gameController.players = gameController.get_players(p1.value, p2.value);
+  if (gameController.against_computer){
+    gameController.players = gameController.get_players("Human", "Ai");
     gameController.display_current_turn(gameController.current_player);
-    document.getElementById('error_message').textContent = "";
-    p1.value = "";
-    p2.value = "";
-
   }else{
-    document.getElementById('error_message').textContent = "The playe's name must have more than 3 chars ";
-  }
 
+    const p1 = form.playerOne;
+    const p2 = form.playerTwo;
+
+    if (validatePlayers(p1.value, p2.value)) {
+      gameController.players = gameController.get_players(p1.value, p2.value);
+      gameController.display_current_turn(gameController.current_player);
+      document.getElementById('error_message').textContent = "";
+      p1.value = "";
+      p2.value = "";
+
+    }else{
+      document.getElementById('error_message').textContent = "The playe's name must have more than 3 chars ";
+    }
+
+  }
 });
 
 
@@ -44,6 +50,15 @@ toggle_button.addEventListener('click', (event) => {
 const squares = [...document.querySelectorAll('.square')];
 squares.forEach((square) => {
   square.addEventListener('click',(event) => {
+
+    if (gameController.players.length > 0){
+      gameBoard.add_move(event.target.value, '●');
+      console.log(aiEntity.bestMove());
+      gameBoard.add_move(aiEntity.bestMove() + 1, '✘');
+      gameController.render(gameBoard.arr);
+    }else {
+      console.log("U dont have players");
+    }
     // const cPlayer = gameController.current_player;
     // if (gameController.players.length > 0 &&
     //     gameBoard.add_move(event.target.value, gameController.players[cPlayer].symbol)) {
@@ -62,10 +77,7 @@ squares.forEach((square) => {
     //   }
     // }
 
-    gameBoard.add_move(event.target.value, '●');
-    console.log(aiEntity.bestMove());
-    gameBoard.add_move(aiEntity.bestMove() + 1, '✘');
-    gameController.render(gameBoard.arr);
+
   });
 });
 
