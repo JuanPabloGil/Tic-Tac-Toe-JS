@@ -13,6 +13,7 @@ The porpuse of this project was to put into practice [Factory Functions](https:/
 - CSS
 - HTML
 - JavaScript
+- [webpack](https://webpack.js.org/)
 
 ## Live Demo
 
