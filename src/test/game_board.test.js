@@ -35,5 +35,4 @@ describe('#add_move', () => {
     expect(gameBoard.addMove('12', '✘')).toBe(false);
   });
 
-
 });
