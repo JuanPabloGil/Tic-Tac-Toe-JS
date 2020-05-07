@@ -30,12 +30,30 @@ describe('#add_move', () => {
     expect(gameBoard.arr[0]).toBe('✘');
   });
 
-  test('Check if the place hhas been chosen as string ', () => {
-    expect(gameBoard.addMove(1, '✘')).toBe(false);
+  test('choose a place with an integer', () => {
+    expect(gameBoard.addMove(5, '✘')).toBe(false);
   });
 
-  test('choose a place out of the range', () => {
+  test('didn\'t modify a place that has been chosen with an integer', () => {
+    gameBoard.addMove(5, '✘')
+    expect(gameBoard.arr[0]).toBe('');
+  });
+
+  test('choose a place out of the range (1-9)', () => {
     expect(gameBoard.addMove('12', '✘')).toBe(false);
   });
 
+  test('didn\'t modify a place out of the range (1-9)', () => {
+    gameBoard.addMove('12', '✘')
+    expect(gameBoard.arr.every((place) => place === '')).toBe(true);
+  });
+
+  test('choose a place with characters', () => {
+    expect(gameBoard.addMove('one', '✘')).toBe(false);
+  });
+
+  test('doesn\'t modify a place that has been chosen with characters', () => {
+    gameBoard.addMove('one', '✘')
+    expect(gameBoard.arr.every((place) => place === '')).toBe(true);
+  });
 });
