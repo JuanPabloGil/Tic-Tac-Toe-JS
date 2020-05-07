@@ -10,8 +10,11 @@ beforeEach(() => {
 });
 
 describe('#add_move', () => {
+  test('chose a place that is availabe', () => {
+    expect(gameBoard.addMove('1', '✘')).toBe(true);
+  });
 
-  test('modify a place  that is availabe', () => {
+  test('modify a place that is availabe', () => {
     gameBoard.addMove('1', '✘');
     expect(gameBoard.arr[0]).toBe('✘');
   });
@@ -22,7 +25,7 @@ describe('#add_move', () => {
   });
 
   test('didn\'t modify a place that is occupied', () => {
-    gameBoard.addMove('1', '✘');
+    gameBoard.arr  = ['✘', '', '', '', '', '', '', '', ''];
     gameBoard.addMove('1', '●');
     expect(gameBoard.arr[0]).toBe('✘');
   });
