@@ -1,9 +1,8 @@
-import gameBoard from './game_board';
-
-const ai = '✘';
-const human = '●';
-
 const aiEntity = (function aiEntity() { // eslint-disable-line no-unused-vars
+  const ai = '✘';
+  const human = '●';
+  
+  let gameBoard;
 
   const scores = () => ({
     '✘': 10,
@@ -52,7 +51,8 @@ const aiEntity = (function aiEntity() { // eslint-disable-line no-unused-vars
   }
 
 
-  const bestMove = function bestMove() {
+  const bestMove = function bestMove(currentGameBoard) {
+    gameBoard = currentGameBoard;
     let bestScore = -Infinity;
     let move;
     gameBoard.arr.forEach((item, i) => {

@@ -82,7 +82,7 @@ squares.forEach((square) => {
         && gameBoard.thereIsPlace()
       ) {
         cPlayer = gameController.currentPlayer;
-        place = (aiEntity.bestMove() + 1).toString();
+        place = (aiEntity.bestMove(gameBoard) + 1).toString();
         checkCurrentPlayer(place, cPlayer);
       }
     }

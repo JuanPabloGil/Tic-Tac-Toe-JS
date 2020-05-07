@@ -1,14 +1,16 @@
 import Player from './players';
 
 const gameController = (function gameController(doc) { // eslint-disable-line no-unused-vars
+  const players = [];
+  const currentPlayer = 0;
+  const againstComputer = true;
+
   const render = (arr) => {
     const squares = [...doc.querySelectorAll('.square')];
     squares.forEach((square, index) => {
       square.textContent = arr[index];
     });
   };
-
-  const players = [];
 
   const getPlayers = (playerOne, playerTwo) => [Player(
     playerOne,
@@ -19,22 +21,18 @@ const gameController = (function gameController(doc) { // eslint-disable-line no
     '✘',
   )];
 
-  const currentPlayer = 0;
-
   const displayOnTitleMessage = function displayOnTitleMessage(message) {
     doc.getElementById('cPlayer').textContent = message;
   };
 
-  const againstComputer = true;
-
 
   return {
-    render,
-    getPlayers,
+    againstComputer,
     players,
     currentPlayer,
     displayOnTitleMessage,
-    againstComputer,
+    render,
+    getPlayers,
   };
 }(document));
 
