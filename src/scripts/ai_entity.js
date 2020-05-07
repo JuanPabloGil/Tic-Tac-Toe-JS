@@ -1,7 +1,7 @@
 const aiEntity = (function aiEntity() { // eslint-disable-line no-unused-vars
   const ai = '✘';
   const human = '●';
-  
+
   let gameBoard;
 
   const scores = () => ({
