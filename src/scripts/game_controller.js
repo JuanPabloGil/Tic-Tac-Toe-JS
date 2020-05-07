@@ -1,4 +1,5 @@
-import Player from './players';
+import dom from './domManipulation';
+import player from './players';
 
 const gameController = (function gameController(doc) { // eslint-disable-line no-unused-vars
   const players = [];
@@ -6,23 +7,23 @@ const gameController = (function gameController(doc) { // eslint-disable-line no
   const againstComputer = true;
 
   const render = (arr) => {
-    const squares = [...doc.querySelectorAll('.square')];
+    const squares = dom.getElements(doc, '.square');
     squares.forEach((square, index) => {
-      square.textContent = arr[index];
+      dom.render(square, arr[index]);
     });
   };
 
-  const getPlayers = (playerOne, playerTwo) => [Player(
+  const getPlayers = (playerOne, playerTwo) => [player(
     playerOne,
     '●',
   ),
-  Player(
+  player(
     playerTwo,
     '✘',
   )];
 
   const displayOnTitleMessage = function displayOnTitleMessage(message) {
-    doc.getElementById('cPlayer').textContent = message;
+    dom.render(dom.getElement(doc, '#cPlayer'), message);
   };
 
 
