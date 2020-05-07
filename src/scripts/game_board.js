@@ -69,3 +69,6 @@ const gameBoard = (function gameBoard() { // eslint-disable-line no-unused-vars
     cleanBoard,
   };
 }());
+
+
+export default gameBoard;

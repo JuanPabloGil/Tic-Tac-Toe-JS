@@ -1,4 +1,5 @@
-/* global  Player */
+import Player from './players';
+
 const gameController = (function gameController(doc) { // eslint-disable-line no-unused-vars
   const render = (arr) => {
     const squares = [...doc.querySelectorAll('.square')];
@@ -36,3 +37,6 @@ const gameController = (function gameController(doc) { // eslint-disable-line no
     againstComputer,
   };
 }(document));
+
+
+export default gameController;

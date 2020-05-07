@@ -1,7 +1,10 @@
-/* global gameBoard */
+import gameBoard from './game_board';
+
 const ai = '✘';
 const human = '●';
+
 const aiEntity = (function aiEntity() { // eslint-disable-line no-unused-vars
+
   const scores = () => ({
     '✘': 10,
     '●': -10,
@@ -70,3 +73,5 @@ const aiEntity = (function aiEntity() { // eslint-disable-line no-unused-vars
     bestMove,
   };
 }());
+
+export default aiEntity;

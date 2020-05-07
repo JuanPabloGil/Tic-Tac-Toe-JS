@@ -4,3 +4,5 @@ const Player = (namePlayer, symbolPlayer) => { // eslint-disable-line no-unused-
 
   return { name, symbol };
 };
+
+export default Player ;
