@@ -13,6 +13,7 @@ The porpuse of this project was to put into practice [Factory Functions](https:/
 - CSS
 - HTML
 - JavaScript
+- [webpack](https://webpack.js.org/)
 
 ## Live Demo
 
@@ -28,10 +29,20 @@ Download the project
 
     $ git clone https://github.com/JuanPabloGil/Tic-Tac-Toe-JS.git
 
+Install the dependencies
+
+    $ npm install
+
 ### Usage
 
 - Open **index.html** file with your favorite browser. It's inside the project's root directory.
 - That's it. Let's start playing Tic Tac Toe.
+
+### Run tests
+
+Execute the next command
+
+    $ npm run test
 
 ## Authors
 

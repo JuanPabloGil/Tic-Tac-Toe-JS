@@ -24,6 +24,7 @@ const gameBoard = (function gameBoard() { // eslint-disable-line no-unused-vars
 
   const addMove = function addMove(place, symbol) {
     if (!/^[1-9]$/.test(place)
+      || typeof place !== 'string'
       || this.arr[parseInt(place, 10) - 1] === '●'
       || this.arr[parseInt(place, 10) - 1] === '✘') {
       return false;
@@ -69,3 +70,5 @@ const gameBoard = (function gameBoard() { // eslint-disable-line no-unused-vars
     cleanBoard,
   };
 }());
+
+export default gameBoard;

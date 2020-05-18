@@ -1,4 +1,7 @@
-/* global gameController, gameBoard, aiEntity */
+
+import gameBoard from './game_board';
+import gameController from './game_controller';
+import aiEntity from './ai_entity';
 
 function validatePlayers(player1, player2) {
   if (player1.length > 3 && player2.length > 3) {
@@ -79,7 +82,7 @@ squares.forEach((square) => {
         && gameBoard.thereIsPlace()
       ) {
         cPlayer = gameController.currentPlayer;
-        place = (aiEntity.bestMove() + 1).toString();
+        place = (aiEntity.bestMove(gameBoard) + 1).toString();
         checkCurrentPlayer(place, cPlayer);
       }
     }
