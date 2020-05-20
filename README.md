@@ -6,14 +6,14 @@
     <img src="image.png">
 </p>
 
-The porpuse of this project was to put into practice [Factory Functions](https://www.theodinproject.com/courses/javascript/lessons/factory-functions-and-the-module-pattern#factory-function-introduction) and [The Module Pattern](https://www.theodinproject.com/courses/javascript/lessons/factory-functions-and-the-module-pattern#the-module-pattern) along with the main concepts of Object Oriented Programming. Particularly, classes/objects and how to access their methods and attributes. We also implement [minimax](https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-3-tic-tac-toe-ai-finding-optimal-move/) algorithm to play against the computer.
+The purpose of this project was to put into practice [Factory Functions](https://www.theodinproject.com/courses/javascript/lessons/factory-functions-and-the-module-pattern#factory-function-introduction) and [The Module Pattern](https://www.theodinproject.com/courses/javascript/lessons/factory-functions-and-the-module-pattern#the-module-pattern) along with the main concepts of Object-Oriented Programming. Particularly, classes/objects and how to access their methods and attributes. We also implement a [minimax](https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-3-tic-tac-toe-ai-finding-optimal-move/) algorithm to play against the computer.
+
 
 ## Built With
-
-- CSS
 - HTML
+- CSS
 - JavaScript
-- [webpack](https://webpack.js.org/)
+- [Webpack](https://webpack.js.org/)
 
 ## Live Demo
 
